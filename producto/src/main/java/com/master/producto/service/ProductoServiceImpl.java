@@ -22,6 +22,7 @@ public class ProductoServiceImpl implements ProductoService{
     public void actualizarStock(int codigoProducto, int stock) {
         Producto producto = dao.findById(codigoProducto).get();
         producto.setStock(stock);
+        dao.save(producto);
     }
 
     @Override

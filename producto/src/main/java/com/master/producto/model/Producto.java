@@ -13,6 +13,7 @@ public class Producto {
     @Column (name = "codigo_producto")
     private int codigoProducto;
     private String producto;
+    @Column (name = "precio")
     private double precioUnitario;
     private int stock;
     
