@@ -13,21 +13,39 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Autowired
     ProductosDao dao;
-    @Override
-    public List<Producto> productos() {
-        return dao.findAll();
-    }
-
-    @Override
-    public void actualizarStock(int codigoProducto, int stock) {
-        Producto producto = dao.findById(codigoProducto).get();
-        producto.setStock(stock);
-        dao.save(producto);
-    }
-
-    @Override
-    public double obtenerPrecioProducto(int codigoProducto) {
-        return dao.findById(codigoProducto).get().getPrecioUnitario();
-    }
+    
+    /**
+    * Recupera la lista de productos.
+    * 
+    * @return Lista de objetos Producto.
+    */
+   @Override
+   public List<Producto> productos() {
+       return dao.findAll();
+   }
+   
+   /**
+    * Actualiza el stock de un producto.
+    * 
+    * @param codigoProducto El código del producto.
+    * @param stock          El nuevo valor del stock.
+    */
+   @Override
+   public void actualizarStock(int codigoProducto, int stock) {
+       Producto producto = dao.findById(codigoProducto).get();
+       producto.setStock(stock);
+       dao.save(producto);
+   }
+   
+   /**
+    * Recupera el precio de un producto.
+    * 
+    * @param codigoProducto El código del producto.
+    * @return El precio del producto.
+    */
+   @Override
+   public double obtenerPrecioProducto(int codigoProducto) {
+       return dao.findById(codigoProducto).get().getPrecioUnitario();
+   }
     
 }
